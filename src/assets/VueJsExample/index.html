@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO List</title>
+    <script src="vue.js"></script>
+    <script src="default.js" defer></script>
+    <link rel="stylesheet" href="default.css" />
+</head>
+
+<body>
+
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos <strong style="font-size: 0.3em;">v0.01</strong></h1>
+            <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="newTodo"
+                @keyup.enter="addTodo">
+        </header>
+        <section class="main" v-show="todos.length" v-cloak>
+            <input class="toggle-all" type="checkbox" v-model="allDone">
+            <ul class="todo-list">
+                <li v-for="todo in filteredTodos" class="todo" :key="todo.id" :class="{ completed: todo.completed, editing: todo == editedTodo }">
+                    <div class="view">
+                        <input class="toggle" type="checkbox" v-model="todo.completed">
+                        <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
+                        <button class="destroy" @click="removeTodo(todo)"></button>
+                    </div>
+                    <input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo" @blur="doneEdit(todo)"
+                        @keyup.enter="doneEdit(todo)" @keyup.esc="cancelEdit(todo)">
+                </li>
+            </ul>
+        </section>
+        <footer class="footer" v-show="todos.length" v-cloak>
+            <div class="info">
+                <p>Double-click to edit a todo</p>
+            </div>
+            <span class="todo-count">
+                <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
+            </span>
+            <ul class="filters">
+                <li><a href="#/all" :class="{ selected: visibility == 'all' }">All</a></li>
+                <li><a href="#/active" :class="{ selected: visibility == 'active' }">Active</a></li>
+                <li><a href="#/completed" :class="{ selected: visibility == 'completed' }">Completed</a></li>
+            </ul>
+            <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
+                Clear completed
+            </button>
+        </footer>
+    </section>
+
+    <div class="x">
+        <p style="font-size: 10px;">
+            https://jsfiddle.net/yyx990803/4dr2fLb7/embedded/result,html,js,css
+            <br>
+            https://jsfiddle.net/yyx990803/4dr2fLb7/?utm_source=website&utm_medium=embed&utm_campaign=4dr2fLb7
+        </p>
+    </div>
+</body>
+
+</html>

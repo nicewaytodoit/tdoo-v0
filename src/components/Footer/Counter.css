@@ -1,0 +1,8 @@
+.TodoCount {
+	float: left;
+	text-align: left;
+}
+
+.TodoCount strong {
+	font-weight: 300;
+}
