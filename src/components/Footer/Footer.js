@@ -9,12 +9,15 @@ const footer = (props) => {
             <div className="info">
                 <p>Double-click to edit a todo</p>
             </div>
-            <Counter remaining={''} />
-            <Filter />
+            <Counter 
+                remaining={props.remaining} />
+            <Filter
+                visibility={props.visibility}
+            />
             <button
                 className="clear-completed"
                 onClick={props.removeCompleted}
-                display={props.todosLength > props.remaining ? 'block' : 'none'} >
+                style={{display: (props.todosLength > props.remaining) ? 'block' : 'none' }} >
                 Clear completed
             </button >
         </footer >
