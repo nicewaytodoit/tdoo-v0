@@ -12,7 +12,7 @@ const todoList = (props) => {
                 className="toggle-all"
                 type="checkbox"
                 onChange={(e) => props.allDone.set(e.target.checked)}
-                //v-model="allDone"
+                checked={props.allDone.get()}
                  />
             <ul className="TodoList">
                 {props.filteredTodos(props.todos).map((item) => {

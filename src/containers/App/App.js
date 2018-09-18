@@ -22,7 +22,7 @@ class App extends Component {
   filteredTodos = (todos) => filters[this.state.visibility](todos);
   remaining = (todos) => filters.active(todos).length;
   allDone = {
-    get: () => this.remaining(this.state.todos) === 0,
+    get: () => (this.remaining(this.state.todos) === 0),
     set: (value) => {
       const newArray = this.state.todos.map((todo) => {
         return {
@@ -31,7 +31,7 @@ class App extends Component {
         }
       });
       // console.log('Check all', this.state.todos, newArray);
-      this.setState({todos: newArray});
+      this.saveTodos(newArray);
     }};
 
     componentWillMount() {
