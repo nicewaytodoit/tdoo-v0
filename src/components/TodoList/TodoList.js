@@ -10,7 +10,8 @@ const todoList = (props) => {
         >
             <input
                 className="toggle-all"
-                type="checkbox" 
+                type="checkbox"
+                onChange={(e) => props.allDone.set(e.target.checked)}
                 //v-model="allDone"
                  />
             <ul className="TodoList">
