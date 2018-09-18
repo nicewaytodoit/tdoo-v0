@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 import Header from '../../components/Header';
 import NewTodo from '../../components/NewTodo';
@@ -36,12 +37,30 @@ class App extends Component {
   };
 
   componentWillMount() {
+    this.onHashChange();
     const initData = tdooStorage.fetch();
     this.setState({ todos: initData.todos, uid: initData.uid }, () => {
       //console.log('State is set!'); 
     });
   }
 
+  onHashChange = () => {
+    let visibleWhat = window.location.hash.replace(/#\/?/, '');
+    if (filters[visibleWhat]) {
+      this.setState({ visibility: visibleWhat })
+    } else {
+      window.location.hash = ''
+      this.setState({ visibility: 'all' })
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("hashchange", (e) => this.onHashChange() );
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("hashchange");
+  }
 
   saveTodos = (todosModified) => {
     this.setState({ todos: todosModified }, () => {
