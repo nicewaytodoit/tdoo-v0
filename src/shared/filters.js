@@ -1,5 +1,4 @@
 const all = (todos) => {
-    // console.log('all', todos);
     return todos;
 }
 

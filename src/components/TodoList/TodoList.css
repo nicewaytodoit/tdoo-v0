@@ -123,7 +123,23 @@ label[for='toggle-all'] {
 	color: #cc9a9a;
 	margin-bottom: 11px;
 	transition: color 0.2s ease-out;
+	box-sizing: border-box; 
 }
+
+.TodoList li .date {
+	font-size: 0.5em;
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 60px;
+	color: #000;
+}
+
+.TodoList li:hover .date {
+	color: #aaa;
+	display: block;
+}
+
 
 .TodoList li .destroy:hover {
 	color: #af5b5e;

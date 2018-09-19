@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import './App.css';
 import Header from '../../components/Header';
 import NewTodo from '../../components/NewTodo';
@@ -17,7 +17,8 @@ class App extends Component {
     newTodo: '',
     editedTodo: null,
     visibility: 'all',
-    uid: 0
+    uid: 0,
+    beforeEditCache: ''
   }
 
   filteredTodos = () => filters[this.state.visibility](this.state.todos);
@@ -31,7 +32,6 @@ class App extends Component {
           completed: value
         }
       });
-      // console.log('Check all', this.state.todos, newArray);
       this.saveTodos(newArray);
     }
   };
@@ -39,9 +39,7 @@ class App extends Component {
   componentWillMount() {
     this.onHashChange();
     const initData = tdooStorage.fetch();
-    this.setState({ todos: initData.todos, uid: initData.uid }, () => {
-      //console.log('State is set!'); 
-    });
+    this.setState({ todos: initData.todos, uid: initData.uid }, () => { });
   }
 
   onHashChange = () => {
@@ -55,7 +53,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("hashchange", (e) => this.onHashChange() );
+    window.addEventListener("hashchange", (e) => this.onHashChange());
   }
 
   componentWillUnmount() {
@@ -78,7 +76,8 @@ class App extends Component {
     let todo = {
       id: this.state.uid + 1,
       title: value,
-      completed: false
+      completed: false,
+      date: new Date()
     }
     todosList.push(todo);
     this.setState({ newTodo: '', uid: todo.id }, () => {
@@ -94,24 +93,36 @@ class App extends Component {
   }
 
   editTodo = (todo) => {
-    this.beforeEditCache = todo.title
-    this.editedTodo = todo
+    this.setState({
+      beforeEditCache: todo.title,
+      editedTodo: todo
+    })
+
   }
 
-  doneEdit = (todo) => {
-    if (!this.editedTodo) {
+  doneEdit = (todoId, title) => {
+    console.log('Edit vs cancel faster');
+    if (!this.state.editedTodo) {
       return;
     }
-    this.editedTodo = null
-    todo.title = todo.title.trim()
-    if (!todo.title) {
-      this.removeTodo(todo)
+    const titleTrimmed = title.trim();
+    if (!titleTrimmed) {
+      this.removeTodo(todoId)
+    } else {
+      const index = this.state.todos.findIndex((todo) => todo.id === todoId);
+      if (index < 0) return;
+      const newTodo = { ...this.state.todos[index], title: titleTrimmed };
+      const newList = [...this.state.todos];
+      newList[index] = newTodo;
+      this.setState({ editedTodo: null }, () => {
+        this.saveTodos(newList);
+      });
     }
   }
 
-  cancelEdit = (todo) => {
-    this.editedTodo = null
-    todo.title = this.beforeEditCache
+  cancelEdit = (id) => {
+    console.log(id);
+    this.setState({ editedTodo: null });
   }
 
   removeCompleted = () => {
