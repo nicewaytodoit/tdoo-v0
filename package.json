@@ -2,6 +2,7 @@
   "name": "tdoo-v0",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://www.tdoo.co.uk/tdoo-v0",
   "dependencies": {
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
