@@ -13,7 +13,7 @@ This should be translated to React Native as well.
 Application Version is written in the following files:
 - /components/Header.js
 - package.json
-- /public/index.html > title
+- /public/index.html > title 
 
 ## Application Demo
 You can see Demo here and use it for your convenience.
