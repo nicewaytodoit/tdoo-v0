@@ -16,8 +16,10 @@ Application Version is written in the following files:
 - /public/index.html > title 
 
 ## Application Demo
-You can see Demo here and use it at your convenience.
+You can check the demo version here: 
 
 [TDoo Zero - DEMO](http://www.tdoo.co.uk/tdoo-v0)
 
+and use it at your convenience.
 
+More things to come in future, so stay in touch ...
