@@ -18,6 +18,6 @@ Application Version is written in the following files:
 ## Application Demo
 You can see Demo here and use it at your convenience.
 
-[TDoo Zero - DEMO](www.tdoo.co.uk/tdoo-v0)
+[TDoo Zero - DEMO](http://www.tdoo.co.uk/tdoo-v0)
 
 
