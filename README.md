@@ -23,3 +23,9 @@ You can check the demo version here:
 and use it at your convenience.
 
 More things to come in future, so stay in touch ...
+
+## Suggest a Feature
+Is there something you'd like to see in tdoo-v0?
+
+Maybe in a newer version, we could implement some of those.
+For the future, we definitely need to build a voting system that will tell us what is the feature you like the most and would like to see it implemented first.
