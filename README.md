@@ -29,3 +29,5 @@ Is there something you'd like to see in tdoo-v0?
 
 Maybe in a newer version, we could implement some of those.
 For the future, we definitely need to build a voting system that will tell us what is the feature you like the most and would like to see it implemented first.
+
+--------------------
