@@ -34,7 +34,7 @@ const footer = (props) => {
             </footer>
             <div style={noteStyle}>
                 <a href="/">Go Back >> to main TDoo page</a><br />
-                <a href="https://github.com/nicewaytodoit" target="_blank">Source Code on GitHub</a>
+                <a href="https://github.com/nicewaytodoit" target="_blank" rel="noopener noreferrer">Source Code on GitHub</a>
             </div>
         </Fragment>
     )
